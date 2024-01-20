@@ -5,9 +5,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-int *push(int *stack, int *top, int value);
-void pall(int* stack, int size);
-
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -37,5 +34,11 @@ typedef struct instruction_s
         char *opcode;
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+
+int main(int argc, char *argv[]);
+void execute_instruction(instruction_t *instructions, char *opcode, stack_t **stack, unsigned int line_number, int value);
+void push(stack_t **stack, unsigned int value);
+void pall(stack_t **stack, unsigned int n);
+void free_stack(stack_t *stack);
 
 #endif

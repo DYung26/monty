@@ -66,9 +66,14 @@ int main(int argc, char *argv[]) {
     			fclose(file);
 				return EXIT_FAILURE;
 			}
-        } else {
+        } else if (strcmp(command, "pall") == 0) {
 			instructions[1].f(&stack, value);
-        }
+        } else if ((strcmp(command, "pall") != 0) || (strcmp(command, "push") != 0)) {
+			printf("L%d: unknown instruction %s\n", lineNumber, command);
+			free_stack(stack);
+            fclose(file);
+			return EXIT_FAILURE;
+		}
 	}
 	free_stack(stack);
 	fclose(file);
